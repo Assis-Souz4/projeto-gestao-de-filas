@@ -2,11 +2,13 @@ const form = document.querySelector("form");
 const resp = document.querySelector("resp");
 const temp = document.querySelector(".temp");
 const pessoas = [];
-const pessoaPreferencial = 60;
+const pessoasPreferenciais = 60;
 
-const sumirMsg = setTimeout(() => {
-  temp.innerText = "";
-}, 1500);
+function sumirMsg() {
+  setTimeout(() => {
+    temp.innerText = "";
+  }, 1700);
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -21,15 +23,17 @@ form.addEventListener("submit", (e) => {
   form.reset();
   form.inNome.focus();
 
-  sumirMsg(temp);
+  sumirMsg();
 
   console.log(nome, idade, pessoas, temp);
 });
 
 form.btnPreferencial.addEventListener("click", () => {
-  if (pessoas.length == 0) {
-    temp.innerText = `Não há pessoas preferenciais!`;
+
+  if (pessoas.idade < 60) {
+    temp.innerText = `Não há pessoas preferenciais!!`;
+    console.log(`Não há pessoas preferenciais!!`);
     sumirMsg();
-    return
+    return;
   }
 });
