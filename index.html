@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Filas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+    <main class="container">
+        <section class="principal">
+            <h1 class="titulo">Gestão de Filas
+                <hr>
+            </h1>
+
+
+            <form action="#">
+
+                <div>
+                    <label for="inNome">
+                        Nome:
+                        <input type="text" id="inNome" required autofocus>
+                    </label>
+                    <label for="inIdade">
+                        Idade:
+                        <input type="number" id="inIdade" min="0" required>
+                        <input type="submit">
+                    </label>
+                </div>
+
+                <div class="container-funcao">
+                    <p class="funcao">
+                        <input type="button" id="btnPreferencial" value="Preferencial">
+                        <input type="button" id="ordenarPreferenncial" value="Ordenar">
+                    </p>
+                    <p class="funcao">
+                        <input type="button" id="btnComum" value="Comum">
+                        <input type="button" id="ordenarComum" value="Ordenar">
+                    </p>
+                </div>
+            </form>
+            <section class="container-respostas">
+                <p class="resp">
+
+                </p>
+            </section>
+            <p class="temp">temp</p>
+        </section>
+    </main>
+    <script src="./assets/main.js"></script>
+</body>
+
+</html>
