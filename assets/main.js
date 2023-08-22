@@ -10,7 +10,7 @@ function sumirMsg() {
 }
 function arrayVazio() {
   if (clientes.length == 0) {
-    temp.innerText = "Não existe Clientes prioritários(as)!!";
+    temp.innerText = "Não existe Clientes!!";
     inNome.focus();
     sumirMsg();
   }
@@ -19,11 +19,6 @@ function arrayVazio() {
 function prioridade() {
   arrayVazio();
   clientes.forEach((cliente) => {
-    // if (cliente.idade < 60) {
-    //   temp.innerText = "Não existe Clientes prioritários(as)!!";
-    //   inNome.focus();
-    //   sumirMsg();
-    // }
     const preferencial = clientes.filter((cliente) => cliente.idade >= 60, "");
     resp.innerText = `Cliente(s) com Prioridade para atendimento:\n ${"-".repeat(
       50
@@ -37,22 +32,37 @@ function prioridade() {
 function comum() {
   arrayVazio();
   clientes.forEach((cliente) => {
-    // if (cliente.idade > 60) {
-    //   temp.innerText = "Não existe Clientes prioritários(as)!!";
-    //   inNome.focus();
-    //   form.reset();
-    //   sumirMsg();
-    // }
     const comuns = clientes.filter((cliente) => cliente.idade < 60, "");
-    resp.innerText = `Cliente(s) para atendimento:\n ${"-".repeat(50)}\n`;
-
+    resp.innerText = `Cliente(s) para atendimento Comum:\n ${"-".repeat(50)}\n`;
     comuns.forEach((cliente, i) => {
       resp.innerText += `${i + 1} - ${cliente.nome}\n`;
     });
   });
 }
 function geral() {
-  preferencial();
+  arrayVazio();
+
+  const copia = [...clientes];
+
+  let acc = "";
+
+  copia.forEach((el, i) => {
+    acc += `${i + 1 + " - " + el["nome"]}\n`;
+  });
+
+  if (acc.length !== 0) {
+    resp.innerText = `Cliente(s) para Atendimento\n${"-".repeat(50)}\n${acc}\n`;
+    return;
+  }
+}
+function limpar() {
+  if (clientes.length == 0){
+    temp.innerText = "Tudo Limpo!!";
+    sumirMsg();
+  }
+  resp.innerText = " ";
+  form.reset();
+  form.inNome.focus();
 }
 
 form.addEventListener("submit", (e) => {
@@ -69,9 +79,12 @@ form.addEventListener("submit", (e) => {
   form.inNome.focus();
 
   sumirMsg();
-  console.log(clientes);
 });
 
 form.btnPreferencial.addEventListener("click", prioridade);
 
 form.btnComum.addEventListener("click", comum);
+
+form.btnGeral.addEventListener("click", geral);
+
+form.btnLimpar.addEventListener("click", limpar);
